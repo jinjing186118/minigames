@@ -1,0 +1,336 @@
+body.game-page {
+  background: #0e0906;
+}
+
+.mine-time {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1.8cqw;
+  background: rgb(0 0 0 / 0.3);
+}
+
+.mine-time i {
+  display: block;
+  height: 100%;
+  background: #ffd23c;
+  transform-origin: left;
+}
+
+.mine-time--late i {
+  background: #ff5b3a;
+}
+
+.mine-gold,
+.mine-where,
+.mine-hint,
+.mine-banner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 900;
+}
+
+.mine-gold {
+  top: 12cqw;
+  color: #ffd23c;
+  font-size: 13cqw;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 1.2cqw #4a2c00;
+  paint-order: stroke fill;
+}
+
+.mine-gold--bump {
+  animation: mine-bump 0.16s ease-out;
+}
+
+@keyframes mine-bump {
+  from {
+    transform: scale(1.16);
+    filter: brightness(1.5);
+  }
+}
+
+.mine-next {
+  position: absolute;
+  top: 27.5cqw;
+  left: 31cqw;
+  right: 31cqw;
+  height: 1.7cqw;
+  border-radius: 1cqw;
+  background: rgb(0 0 0 / 0.45);
+  box-shadow: 0 0 0 0.45cqw rgb(0 0 0 / 0.35);
+  overflow: hidden;
+}
+
+.mine-next i {
+  display: block;
+  height: 100%;
+  background: var(--next, #fff);
+  box-shadow: 0 0 2cqw var(--next, #fff);
+  transform-origin: left;
+  transition: transform 0.12s ease-out;
+}
+
+.mine-where {
+  top: 31cqw;
+  color: #fff;
+  font-size: 3.8cqw;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0.3cqw 1.2cqw rgb(0 0 0 / 0.8);
+}
+
+.mine-combo {
+  position: absolute;
+  top: 38cqw;
+  right: 4cqw;
+  transform-origin: right center;
+  margin: 0;
+  display: grid;
+  justify-items: end;
+  color: var(--heat, #ffd23c);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  rotate: -6deg;
+  text-shadow: 0 0.4cqw 1.6cqw rgb(0 0 0 / 0.85);
+}
+
+.mine-combo b {
+  font-size: 11cqw;
+  -webkit-text-stroke: 0.9cqw rgb(40 14 0 / 0.9);
+  paint-order: stroke fill;
+}
+
+.mine-combo span {
+  color: #fff;
+  font-size: 3.8cqw;
+  font-variant-numeric: tabular-nums;
+}
+
+.mine-combo i {
+  width: 17cqw;
+  height: 1.1cqw;
+  margin-top: 1cqw;
+  border-radius: 1cqw;
+  background: var(--heat, #ffd23c);
+  box-shadow: 0 0 1.6cqw var(--heat, #ffd23c);
+  transform-origin: right;
+}
+
+/* The edges of the screen glow with the combo, and pulse red in the last seconds. */
+.mine-edge {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  box-shadow: inset 0 0 26cqw var(--heat, #ffd23c);
+  transition: opacity 0.3s;
+}
+
+.mine-edge[data-heat="1"] {
+  opacity: 0.3;
+}
+
+.mine-edge[data-heat="2"] {
+  opacity: 0.45;
+}
+
+.mine-edge[data-heat="3"] {
+  opacity: 0.6;
+}
+
+.mine-edge[data-heat="4"] {
+  opacity: 0.75;
+  animation: mine-throb 0.35s ease-in-out infinite alternate;
+}
+
+.mine-edge--late {
+  opacity: 0.8;
+  box-shadow: inset 0 0 26cqw #ff3b2a;
+  animation: mine-throb 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes mine-throb {
+  to {
+    box-shadow: inset 0 0 12cqw var(--heat, #ffd23c);
+  }
+}
+
+.mine-edge--late {
+  --heat: #ff3b2a;
+}
+
+.mine-hint {
+  bottom: 16cqw;
+  color: #fff;
+  font-size: 6.4cqw;
+  text-shadow: 0 0.4cqw 2cqw rgb(0 0 0 / 0.8);
+  animation: mine-beat 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes mine-beat {
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.mine-pop {
+  position: absolute;
+  top: 47%;
+  translate: -50% 0;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 4.6cqw;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0.3cqw 1cqw rgb(0 0 0 / 0.85);
+  animation: mine-rise 0.75s ease-out forwards;
+}
+
+.mine-pop--gold {
+  color: #ffd23c;
+  font-size: 6cqw;
+}
+
+.mine-pop--big {
+  top: 53%;
+  color: #ffd23c;
+  font-size: 8.5cqw;
+  animation-duration: 1.1s;
+}
+
+.mine-pop--gem {
+  top: 59%;
+  color: #9af5ff;
+  font-size: 8.5cqw;
+  animation-duration: 1.3s;
+}
+
+.mine-pop--cheer {
+  top: 76%;
+  color: #ffe06a;
+  font-size: 9cqw;
+  animation: mine-slam 1.2s ease-out forwards;
+}
+
+.mine-pop--big,
+.mine-pop--gem,
+.mine-pop--cheer,
+.mine-pop--boom {
+  -webkit-text-stroke: 0.9cqw rgb(30 12 0 / 0.85);
+  paint-order: stroke fill;
+}
+
+.mine-pop--boom {
+  top: 40%;
+  color: #ff7a2a;
+  font-size: 15cqw;
+  font-style: italic;
+  animation: mine-slam 0.7s ease-out forwards;
+}
+
+.mine-combo--up {
+  animation: mine-up 0.45s ease-out;
+}
+
+@keyframes mine-up {
+  from {
+    scale: 1.7;
+    filter: brightness(2);
+  }
+}
+
+@keyframes mine-slam {
+  from {
+    transform: scale(2.4) rotate(-10deg);
+    opacity: 0;
+  }
+  18% {
+    transform: scale(1) rotate(-6deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.05) rotate(-6deg);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.2) rotate(-6deg);
+    opacity: 0;
+  }
+}
+
+@keyframes mine-rise {
+  from {
+    transform: translateY(0) scale(0.6);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-4cqw) scale(1.15);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20cqw) scale(1);
+    opacity: 0;
+  }
+}
+
+.mine-banner {
+  top: 68%;
+  color: #fff;
+  font-size: 9cqw;
+  -webkit-text-stroke: 1cqw rgb(20 10 0 / 0.85);
+  paint-order: stroke fill;
+  text-shadow: 0 0.5cqw 2.4cqw rgb(0 0 0 / 0.9);
+}
+
+.mine-banner--in {
+  animation: mine-sign 0.25s ease-out;
+}
+
+@keyframes mine-sign {
+  from {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.mine-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff3c4;
+  opacity: 0;
+}
+
+.mine-flash--on {
+  animation: mine-flash 0.3s ease-out;
+}
+
+@keyframes mine-flash {
+  from {
+    opacity: 0.4;
+  }
+}
+
+.game__headline {
+  color: #ffd23c;
+  -webkit-text-stroke: 1.2cqw #4a2c00;
+  paint-order: stroke fill;
+}
+
+.game__caption {
+  white-space: pre-line;
+  color: #fff;
+  text-shadow: 0 0.4cqw 2.4cqw rgb(0 0 0 / 0.7);
+}
+
+/* For people who asked their device for less motion: no flashes and no throbbing edges. */
+@media (prefers-reduced-motion: reduce) {
+  .mine-flash--on,
+  .mine-edge,
+  .mine-edge--late {
+    animation: none;
+  }
+}
