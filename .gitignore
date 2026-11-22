@@ -1,0 +1,7 @@
+# Local AI Layer files that are licensed for private use only. Never commit them.
+/.claude/
+/.archon/
+/.agents/articles/
+/.agents/commands/
+/.agents/examples/
+/.agents/reference/
